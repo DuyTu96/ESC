@@ -14,4 +14,8 @@ return [
 
     'failed'   => '認証情報と一致するレコードがありません。',
     'throttle' => 'ログインの試行回数が多すぎます。:seconds 秒後にお試しください。',
+<<<<<<< HEAD
+=======
+    'change_email_subject' => '[OPNiD] メールアドレス変更手続きのご案内',
+>>>>>>> Init project
 ];

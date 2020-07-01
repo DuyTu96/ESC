@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'admin',
+        'passwords' => 'admins',
     ],
 
     /*
@@ -41,9 +41,21 @@ return [
             'provider' => 'users',
         ],
 
-        'api' => [
-            'driver' => 'token',
+        'user' => [
+            'driver' => 'jwt',
             'provider' => 'users',
+            'hash' => false,
+        ],
+
+        'admin' => [
+            'driver' => 'jwt',
+            'provider' => 'admins',
+            'hash' => false,
+        ],
+
+        'portal' => [
+            'driver' => 'jwt',
+            'provider' => 'portals',
             'hash' => false,
         ],
     ],
@@ -68,13 +80,18 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\Models\User::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\CompanyAdminUser::class,
+        ],
+
+        'portals' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\ManagementPortalUser::class,
+        ],
     ],
 
     /*
@@ -98,8 +115,37 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+            'url' => 'admin/password/reset/%s',
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'users' => [
+            'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
+        'portals' => [
+            'provider' => 'portals',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Password Reset Url
+    |--------------------------------------------------------------------------
+    */
+    'password_reset_url' => 'password/reset/%s',
 
     /*
     |--------------------------------------------------------------------------
@@ -113,5 +159,16 @@ return [
     */
 
     'password_timeout' => 10800,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Register account confirm Url
+    |--------------------------------------------------------------------------
+    */
+    'register_confirm_url' => 'register/active-notification?token=',
+
+    'email_auth_timeout' => env('MAIL_AUTH_TIMEOUT', 86400),
+
+    'confirm_change_mail_url' => 'account/change-email-success%s',
 
 ];

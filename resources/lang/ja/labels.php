@@ -123,5 +123,12 @@ return [
     // Inquiry
     'inquiry' => 'お問い合わせ',
     'inquiry_send_button' => '送信',
+<<<<<<< HEAD
+=======
+    'inquiry_request' => 'ご意見・ご要望',
+    'inquiry_how_to_use' => '使い方について',
+    'inquiry_report_bug' => '不具合の報告',
+    'inquiry_other' => 'その他'
+>>>>>>> Init project
 
 ];

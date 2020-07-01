@@ -81,6 +81,12 @@ class ErrorType extends BaseEnum
 
     const STATUS_4041 = 404;
 
+    // Not logged in
+    // メールアドレスの認証には事前にログインが必要です。
+    const CODE_4042 = '4042';
+
+    const STATUS_4042 = 404;
+
     // Invalid HTTP method
     // HTTPメソッドが不正です
     const CODE_4050 = '4050';
@@ -92,6 +98,12 @@ class ErrorType extends BaseEnum
     const CODE_4090 = '4090';
 
     const STATUS_4090 = 409;
+
+    //The account cannot be registered
+
+    const CODE_4091 = '4091';
+
+    const STATUS_4091 = 409;
 
     // Validation error
     // /resources/lang/ja/validation.php messages are used
@@ -152,9 +164,35 @@ class ErrorType extends BaseEnum
     const CODE_5007 = '5007';
 
     const STATUS_5007 = 500;
-    
-    // Reset password 
+
+    // Reset password
     const CODE_5008 = '5008';
 
     const STATUS_5008 = 500;
+
+    // BusinessCard cannot be deleted
+    const CODE_5009 = '5009';
+
+    const STATUS_5009 = 500;
+
+    // This admin user cannot be deleted because there is a valid contract
+    // 有効な契約が存在するためこの管理ユーザーを削除することはできません
+    const CODE_5010 = '5010';
+
+    const STATUS_5010 = 500;
+
+    // This user cannot scan mine QR
+    const CODE_5011 = '5011';
+
+    const STATUS_5011 = 500;
+
+    // The QR code is invalid
+    const CODE_5012 = '5012';
+
+    const STATUS_5012 = 500;
+
+    // Cannot delete business card while have a plan contract
+    const CODE_5013 = '5013';
+
+    const STATUS_5013 = 500;
 }

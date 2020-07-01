@@ -91,7 +91,11 @@ class BaseException extends RuntimeException implements Responsable
     {
         return response()->json(
             $this->getBasicResponse(),
+<<<<<<< HEAD
             $this->getStatusCode(),
+=======
+            $this->getStatusCode()
+>>>>>>> Init project
         );
     }
 
