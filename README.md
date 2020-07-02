@@ -1,78 +1,228 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+Laravel Base is based on Laravel 6.18
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+## About Laravel Base
 
-## About Laravel
+Laravel Base is the customized Laravel Project which has prepared environments, components designed for the specific DB schemes, source code easy to be diverted.  
+You can develop API and Web application instantly with Laravel Base.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Install tools below on your local PC before starting.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Git](https://git-scm.com/)
+- [Docker](https://www.docker.com/)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+We recommend [VS Code](https://code.visualstudio.com/) as source code editor.
 
-## Learning Laravel
+## 1. How to setup developing environment
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+#### 1-1. VSCode
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Plug-ins for PHP debug are recommended by ".vscode/extensions.json" when you open the project with VSCode.  
+Install them if you use VSCode.
 
-## Laravel Sponsors
+#### 1-2. Create .env file for Docker
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+$ cp .env.docker .env
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+#### 1-3. Put SQL files
 
-## Contributing
+Put .sql files under "initdb" directory.
+```
+./docker/initdb
+```
+Those .sql files are automatically loaded when docker is starting.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+In .env file, set DB name.
+```
+DB_DATABASE=(DB name)
+```
 
-## Code of Conduct
+#### 1-4. Start up Docker
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```
+$ docker-compose up
+```
+When needed to rebuild.
+```
+$ docker-compose build --no-cache
+```
 
-## Security Vulnerabilities
+#### 1-5. Laravel container
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Connect to the Laravel container.  
+Need to create vendor directory and node_modules directory.
+```
+$ docker-compose exec laravel sh
+(laravel)$ composer install
+(laravel)$ npm install
+(laravel)$ php artisan key:generate
+(laravel)$ php artisan config:clear
+(laravel)$ exit
+$ docker-compose restart
+```
+([Composer](https://github.com/composer/composer) and [npm](https://www.npmjs.com/) are pre-installed in the container.)
 
-## License
+#### 1-6. MySQL container
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Connect to the MySQL container on another console tab.
+```
+$ docker-compose exec mysql sh
+(mysql)$ mysql -u root -h 127.0.0.1 -p
+Enter password: secret
+mysql> use (your DB name)
+mysql> ※ Execute any SQL.
+mysql> exit
+(mysql)$ exit
+```
+
+#### 1-7. Docker commands for frequent use.
+
+Start up containers.
+```
+$ docker-compose up
+```
+Stop containers.
+```
+$ docker-compose stop
+```
+Delete stopped containers.
+```
+$ docker-compose rm
+```
+Stop and delete containers.
+```
+$ docker-compose down
+```
+
+#### 1-8. Debug with xdebug
+
+In ./docker/php.ini
+
+```
+xdebug.remote_host=192.168.88.250
+```
+
+Change "xdebug.remote_host" to your local IP.
+
+Get your local IP:  
+on Mac
+```
+$ ifconfig
+```
+on Windows
+```
+$ ipconfig
+```
+
+## 2. How to commit
+Create a branch from develop branch following [A successful Git branching model](https://nvie.com/posts/a-successful-git-branching-model/).
+
+Feature branch name rule is here.
+```
+feature/(your_name)_yyyymmdd_(feature_name)
+```
+
+Before you commit on Git, analyze and fix source code by [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer).
+```
+$ php vendor/bin/php-cs-fixer fix
+```
+
+## 3. How to deploy to Ubuntu server with [Deployer](https://deployer.org/) and its [recipes](https://github.com/deployphp/recipes)
+
+### 3-1. ToDo before initial deploy.
+
+#### 3-1-1. Link to GitHub
+
+Connect to Ubuntu server and generate public/private rsa key pair.
+```
+$ cd /home/ubuntu/.ssh
+$ ssh-keygen -t rsa
+```
+Register id_rsa.pub (public key) to [GitHub page](https://github.com/settings/ssh).  
+Confirm that you can access GitHub from Ubuntu.
+```
+$ ssh -T git@github.com
+```
+
+#### 3-1-2. Change permission
+```
+$ sudo chown ubuntu:ubuntu -R /usr/share/nginx/html
+```
+
+#### 3-1-3. Change deploy settings
+Change settings of deploy.php below.
+```
+set('application', 'laravel-base');
+set('repository', 'git@github.com:skrum-inc/laravel-base.git');
+set('slack_webhook', 'https://hooks.slack.com/services/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');
+```
+
+Change settings of hosts.yml below.
+```
+hostname: ec2-11-111-11-111.ap-northeast-1.compute.amazonaws.com
+identityFile: ~/.ssh/skrum.pem
+```
+Add hosts like below if an environment has multiple servers.
+```
+production-host-2:
+```
+
+#### 3-1-4. Edit .env of each environment
+Edit .env files below.
+- .env.testing
+- .env.staging
+- .env.production
+
+### 3-2. How to deploy
+Deploy to an environment.
+```
+php vendor/bin/dep deploy [deploy to] -vvv --branch="[remote branch name]"
+```
+[deploy to] includes "testing", "staging" and "production".  
+You can see output with "-vvv" when executing.
+
+Deploy to staging env without "--branch" option: develop branch selected.  
+Deploy to production env without "--branch" option: master branch selected.
+
+When you want to restore deployment.
+```
+$ php vendor/bin/dep rollback [deploy to]
+```
+
+### 3-3. ToDo after initial deploy.
+
+#### 3-3-1. Change document root of Nginx.
+```
+/usr/share/nginx/html
+　↓
+/usr/share/nginx/html/current
+```
+
+## 4. Adminer
+You can access DB on GUI with [Adminer](https://www.adminer.org/).
+
+Connect to Ubuntu server and change IP address limit of Adminer
+```
+vi /usr/share/nginx/html/current/public/adminer_ext.php
+```
+Set your IP address.
+```
+$whiteList = array(
+    // Write IP addresses which are permitted.
+    "xxx.xxx.xxx.xxx",
+    "yyy.yyy.yyy.yyy"
+);
+```
+Open on browser.
+```
+http://(your domain)/adminer-4.7.3.php
+```
+
+## 5. Log viewer
+You can view server logs on browser by [Laravel log viewer](https://github.com/rap2hpoutre/laravel-log-viewer).
+
+Open on browser.
+```
+http://(your domain)/logs
+```

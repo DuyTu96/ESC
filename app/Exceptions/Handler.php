@@ -9,6 +9,7 @@ use Exception;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
@@ -54,6 +55,10 @@ class Handler extends ExceptionHandler
     {
         // API response
         if ($request->is('api/*')) {
+            if ($exception instanceof AuthenticationException) {
+                return $this->toResponse($request, ErrorType::CODE_4010, trans('errors.MSG_4010'), ErrorType::STATUS_4010);
+            }
+
             if ($exception instanceof Responsable) {
                 return $exception->toResponse($request);
             }

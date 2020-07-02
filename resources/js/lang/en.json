@@ -1,0 +1,182 @@
+{
+  "password": {
+    "recovery": {
+      "title": "パスワードの再発行",
+      "description": "登録済のメールアドレスをご入力下さい。\nご入力いただいたメールアドレス宛にパスワード再発行の\nお手続きに関するメールをお送りいたします。",
+      "msg_success": "パスワードリマインダーを送信しました。"  ,
+      "msg_fail": "Email doesn't exist!",
+      "redirect_to_login": "ログイン画面に戻る"
+    },
+    "reset": {
+      "title": "パスワードの再設定",
+      "description": "お客様の確認ができましたので新しいパスワードをご入力下さい。",
+      "msg": {
+        "update_success": "Reset password success, you will redirect to login soon!",
+        "update_fail": "Reset password fail, please try again or contact administrator!"
+      }
+    }
+  },
+  "commons": {
+    "label": {
+      "email": "メールアドレス",
+      "submit": "送信",
+      "registration": "登録",
+      "password": "パスワード",
+      "password_confirm": "パスワード（確認用）",
+      "date": "期間",
+      "display": "件表示"
+    },
+    "perpage": "件表示",
+    "action": "操作",
+    "button": {
+      "delete": "削除",
+      "update": "更新する",
+      "search": "検索",
+      "register": "登録する",
+      "approval": "承認",
+      "non_approval": "非承認",
+      "receive": "受け取る",
+      "create_new": "新規作成",
+      "report": "報告",
+      "send": "送信する"
+    },
+    "alert": {
+      "update_success": "Update successful",
+      "create_success": "Create successful",
+      "delete_success": "Delete successful"
+    },
+    "msg": {
+      "MSG_4000": "不正なリクエストです",
+      "MSG_4010": "認証に失敗しました",
+      "MSG_4011": "認証トークンの有効期限が切れています",
+      "MSG_4012": "認証トークンが無効です",
+      "MSG_4013": "この認証トークンは使用済みです",
+      "MSG_4014": "{0}分後にもう一度お試しください",
+      "MSG_4030": "権限がありません",
+      "MSG_4031": "アクセスは拒否されました",
+      "MSG_4032": "ブロックされています",
+      "MSG_4040": "アカウントは存在しません",
+      "MSG_4041": "データが存在しません",
+      "MSG_4050": "HTTPメソッドが不正です",
+      "MSG_4090": "この操作はすでに実行されています",
+      "MSG_4230": "他のユーザが操作中です",
+      "MSG_5000": "システムエラーが発生しました",
+      "MSG_5001": "予期せぬエラーが発生しました",
+      "MSG_5002": "DBエラーが発生しました",
+      "MSG_5003": "登録に失敗しました",
+      "MSG_5004": "更新に失敗しました",
+      "MSG_5005": "削除に失敗しました",
+      "MSG_5006": "決済に失敗しました",
+      "MSG_5007": "別のユーザーがデータを変更しました",
+      "MSG_4220": {
+        "email_unique": "そのメールアドレスは既に登録されています。",
+        "required": "この項目は必須です"
+      }
+    },
+    "msg_success": {
+      "created": "正常に作成されました"
+    }
+  },
+  "auth": {
+    "login": {
+      "title": "ログイン",
+      "redirect_to_recovery_password": "パスワードをお忘れの方はこちら",
+      "msg": {
+        "success": "ログイン成功",
+        "error": "ログイン失敗"
+      }
+    },
+    "logout": {
+      "title": "ログアウト"
+    }
+  },
+  "title": {
+    "commons": {
+      "confirm_text": "この選択は取り消せません。本当によろしいですか？"
+    }
+  },
+  "label": {
+    "commons": {
+      "name": "氏名",
+      "password": "パスワード",
+      "password_confirm": "パスワード（確認用）",
+      "email": "メールアドレス",
+      "address": "住所",
+      "per_page": "件表示",
+      "action": "操作",
+      "detail": "詳細"
+    },
+    "users": {
+      "user_id": "ユーザーID",
+      "qr_i_token": "個人用QRトークン",
+      "qr_g_token": "複数人用QRトークン",
+      "business_card_id": "名刺ID"
+    },
+    "settlements": {
+      "status": "ステータス",
+      "business_card_id": "名刺ID",
+      "str_payment_id": "Stripe決済ID",
+      "approved_amount": "決済額",
+      "plan_name": "プラン名",
+      "distance": "契約開始/終了日"
+    },
+    "business_cards": {
+      "business_card_information": "名刺情報",
+      "last_name_kanji": "姓",
+      "first_name_kanji": "名",
+      "last_name_kana": "セイ",
+      "first_name_kana": "メイ",
+      "departments": {
+        "name": "部署"
+      },
+      "positions": {
+        "name": "役職"
+      },
+      "business_card_id": "名刺ID",
+      "is_expired": "ステータス",
+      "company_admin_user_id": "管理者ID",
+      "user_id": "ユーザーID",
+      "setting_code": "設定コード",
+      "distance": "契約開始/終了日",
+      "employee_number": "社員番号",
+      "hire_date": "入社日",
+      "email": "Eメール（名刺表示用）",
+      "phone": "電話番号（名刺表示用）"
+    }
+  },
+  "button": {
+    "commons": {
+      "search": "検索",
+      "delete": "削除",
+      "update": "更新する",
+      "edit": "編集",
+      "create": "新規登録",
+      "register": "登録する",
+      "cancel": "キャンセル",
+      "create_new": "新規作成",
+      "back_to_notification_list": "お知らせ管理一覧に戻る",
+      "public_private": "公開/非公開",
+      "detail": "詳細",
+      "send": "送信する",
+      "user_invite": "ユーザー招待",
+      "approve": "承認"
+    }
+  },
+  "options": {
+    "commons": {
+      "select_all": "すべて"
+    }
+  },
+  "msg": {
+    "commons": {
+      "update_success": "招待メールを送信しました",
+      "update_fail": "更新失敗",
+      "create_success": "正常に作成されました",
+      "delete_success": "削除しました",
+      "cancel_edit": "編集をキャンセルしますか？",
+      "cancel_create": "作成をキャンセルしますか？",
+      "invite_success": "メールを正常に送信する",
+      "failed_to_verify_email": "メールを確認できませんでした"
+    }
+  }
+}

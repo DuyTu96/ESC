@@ -123,6 +123,10 @@ return [
     // Inquiry
     'inquiry' => 'お問い合わせ',
     'inquiry_send_button' => '送信',
+    'inquiry_request' => 'Request',
+    'inquiry_how_to_use' => 'How to use',
+    'inquiry_report_bug' => 'Report bug',
+    'inquiry_other' => 'Other',
 
     // Email invite
     'email_invite_title' => 'You have an invitation from Crazy Night Japan',

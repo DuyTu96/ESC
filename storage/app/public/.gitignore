@@ -1,2 +1,6 @@
 *
 !.gitignore
+<<<<<<< HEAD
+=======
+!*.p8
+>>>>>>> Init project

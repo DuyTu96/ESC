@@ -5,6 +5,15 @@
 /vendor
 .env
 .env.backup
+/public/css
+/public/js
+/public/mix-manifest.json
+/storage/*.key
+/public/dist
+/public/mix-manifest.json
+/public/images
+/vendor
+.env
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
