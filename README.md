@@ -120,7 +120,7 @@ Create a branch from develop branch following [A successful Git branching model]
 
 Feature branch name rule is here.
 ```
-feature/(your_name)_yyyymmdd_(feature_name)
+feature/(your_name)_yyyymmdd_(issue_id)
 ```
 
 Before you commit on Git, analyze and fix source code by [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer).
@@ -148,24 +148,6 @@ $ ssh -T git@github.com
 #### 3-1-2. Change permission
 ```
 $ sudo chown ubuntu:ubuntu -R /usr/share/nginx/html
-```
-
-#### 3-1-3. Change deploy settings
-Change settings of deploy.php below.
-```
-set('application', 'laravel-base');
-set('repository', 'git@github.com:skrum-inc/laravel-base.git');
-set('slack_webhook', 'https://hooks.slack.com/services/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');
-```
-
-Change settings of hosts.yml below.
-```
-hostname: ec2-11-111-11-111.ap-northeast-1.compute.amazonaws.com
-identityFile: ~/.ssh/skrum.pem
-```
-Add hosts like below if an environment has multiple servers.
-```
-production-host-2:
 ```
 
 #### 3-1-4. Edit .env of each environment
@@ -197,26 +179,6 @@ $ php vendor/bin/dep rollback [deploy to]
 /usr/share/nginx/html
 　↓
 /usr/share/nginx/html/current
-```
-
-## 4. Adminer
-You can access DB on GUI with [Adminer](https://www.adminer.org/).
-
-Connect to Ubuntu server and change IP address limit of Adminer
-```
-vi /usr/share/nginx/html/current/public/adminer_ext.php
-```
-Set your IP address.
-```
-$whiteList = array(
-    // Write IP addresses which are permitted.
-    "xxx.xxx.xxx.xxx",
-    "yyy.yyy.yyy.yyy"
-);
-```
-Open on browser.
-```
-http://(your domain)/adminer-4.7.3.php
 ```
 
 ## 5. Log viewer

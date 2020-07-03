@@ -37,21 +37,21 @@ services:
     volumes:
       - ./storage/tmp/db:/var/lib/mysql:cached
       - ./docker:/etc/mysql/conf.d
-      - ./docker/initdb:/docker-entrypoint-initdb.d
+      # - ./docker/initdb:/docker-entrypoint-initdb.d
 
-  websocket:
-    build:
-      context: ./docker/
-      dockerfile: websocket.Dockerfile
-    ports:
-      - "8890:8890"
-    env_file:
-      - .env
-    volumes:
-      - ./:/usr/share/nginx/html:cached
-    links:
-      - mysql
-      - redis
+  # websocket:
+  #   build:
+  #     context: ./docker/
+  #     dockerfile: websocket.Dockerfile
+  #   ports:
+  #     - "8890:8890"
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - ./:/usr/share/nginx/html:cached
+  #   links:
+  #     - mysql
+  #     - redis
 
   redis:
     image: redis:alpine
